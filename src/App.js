@@ -30,12 +30,7 @@ fetch('https://awacademy-classifieds.herokuapp.com/ad', requestOptions)
        <button onClick={createAd}>Ad</button>
        </div>
        </header>
-       <div class="field">
-        <label class="label">Name</label></div>
-        <div class="control">
-        <input class="input" type="text" placeholder="Text input"></input>
-          
-        </div>
+       
     </div>
   );
 }
