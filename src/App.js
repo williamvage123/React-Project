@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import "bulma/css/bulma.css";
 
 
 
@@ -29,6 +29,12 @@ fetch('https://awacademy-classifieds.herokuapp.com/ad', requestOptions)
 
        <div>
        <button onClick={createAd}>Ad</button>
+       </div>
+       <div className="field">
+         <label className="label">Name</label>
+         <div className="control">
+           <input className="input" type="text" placeholder="Text"></input>
+         </div>
        </div>
        </header>
        
