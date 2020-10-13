@@ -5,21 +5,26 @@ export default class Form extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            showForm: false,
+            form: {
             title: '',
             description: '',
             name: '',
             location: '',
-            //price: '',
-            //contact: ''
-        }
+            price: null,
+            email: '',
+            phone: ''
+        }}
     }
     
 
     change = (e) => {
         this.setState({
+            form:{
             [e.target.name]: e.target.value
+        }
         });
-
+        console.log(this.state)
     };
 
 
@@ -31,7 +36,14 @@ export default class Form extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(
-                this.state
+                /*name: this.state.name,
+                location: this.state.location,
+                price: this.state.price,
+                description: this.state.description,
+                title: this.state.title,
+                email: this.state.email, 
+                phone: this.state.phone*/
+                this.state.form          
             )
         })
             .then(response => {
@@ -42,58 +54,77 @@ export default class Form extends React.Component {
             })
 
         this.setState({
-            title: '',
-            description: '',
-            name: '',
-            location: '',
-            //price: '',
-            //contact: ''
-
         })
 
 
 
     }
 
-    render() {
+    render(){
         return (
-            <form>
-                <input
+            <div>
+                <button onClick={()=>this.setState({showForm: true})}>Click me</button>
+                {this.state.showForm ? this.renderForm() : null }
+
+            </div>
+        )
+    }
+
+    renderForm() {
+        return (
+            <form visibility="hidden">
+                <div>Title<input
                     name="title"
-                    placeholder="title"
-                    value={this.state.title}
+                    type="text"
+                    maxLength={80}
+                    placeholder="max 80 characters"
+                    value={this.state.form.title}
                     onChange={e => this.change(e)} />
-                <br />
-                <input
+                <br /></div>
+                <div>Description<input
                     name="description"
-                    placeholder="description"
-                    value={this.state.description}
+                    type="text"
+                    placeholder="text"
+                    value={this.state.form.description}
                     onChange={e => this.change(e)} />
-                <br />
-                <input
+                <br /></div>
+                <div>Name<input
                     name="name"
-                    placeholder="name"
-                    value={this.state.name}
+                    placeholder="my name"
+                    type="text"
+                    value={this.state.form.name}
                     onChange={e => this.change(e)} />
-                <br />
-                <input
+                <br /></div>
+                <div>Location<input
                     name="location"
-                    placeholder="location"
-                    value={this.state.location}
+                    type="text"
+                    placeholder="e.g. Stockholm"
+                    value={this.state.form.location}
                     onChange={e => this.change(e)} />
-                <br />
-                {/*<input
+                <br /></div>
+                <div>Price<input
                     name="price"
+                    type="number"
                     placeholder="price"
-                    value={this.state.price}
+                    value={this.state.form.price}
+                    onChange={e => this.setState({price: parseInt(e.target.value)})} />
+                <br /></div>
+                <div>Email<input
+                    name="email"
+                    type="email"
+                    id="email"
+                    placeholder="e.g. alexsmith@gmail.com"
+                    value={this.state.form.email}
                     onChange={e => this.change(e)} />
-                <br />
-                <input
-                    name="contact"
-                    placeholder="contact"
-                    value={this.state.contact}
+                <br /></div>
+                <div>Phone number<input
+                    name="phone"
+                    type="tel"
+                    id="phone"
+                    value={this.state.form.phone}
                     onChange={e => this.change(e)} />
-                <br />*/}
+                <br /></div>
+
 
                 <button onClick={(e) => this.onSubmit(e)}>Create Ad</button>
             </form>
