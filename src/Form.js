@@ -2,14 +2,18 @@ import React from 'react';
 
 
 export default class Form extends React.Component {
-    state = {
-        title: '',
-        description: '',
-        name: '',
-        location: '',
-        price: '',
-        contact: ''
+    constructor(props) {
+        super(props)
+        this.state = {
+            title: '',
+            description: '',
+            name: '',
+            location: '',
+            //price: '',
+            //contact: ''
+        }
     }
+    
 
     change = (e) => {
         this.setState({
@@ -21,20 +25,14 @@ export default class Form extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.props.onSubmit(this.state);
-        fetch('https://awacademy-classifieds.herokuapp.com/ad', this.state, {
+        fetch('https://awacademy-classifieds.herokuapp.com/ad', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                title: '',
-                description: '',
-                name: '',
-                location: '',
-                price: '',
-                contact: ''
-            })
+            body: JSON.stringify(
+                this.state
+            )
         })
             .then(response => {
                 console.log(response)
@@ -48,8 +46,8 @@ export default class Form extends React.Component {
             description: '',
             name: '',
             location: '',
-            price: '',
-            contact: ''
+            //price: '',
+            //contact: ''
 
         })
 
@@ -84,7 +82,7 @@ export default class Form extends React.Component {
                     value={this.state.location}
                     onChange={e => this.change(e)} />
                 <br />
-                <input
+                {/*<input
                     name="price"
                     placeholder="price"
                     value={this.state.price}
@@ -95,7 +93,7 @@ export default class Form extends React.Component {
                     placeholder="contact"
                     value={this.state.contact}
                     onChange={e => this.change(e)} />
-                <br />
+                <br />*/}
 
                 <button onClick={(e) => this.onSubmit(e)}>Create Ad</button>
             </form>
