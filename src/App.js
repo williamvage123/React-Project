@@ -1,47 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
-import "bulma/css/bulma.css";
+import Form from './Form.js'
 
+class App extends Component {
 
+  onSubmit = fields => {
+    console.log('App component got  ', fields)
+    fetch('https://awacademy-classifieds.herokuapp.com/ad')
+        .then(response => response.json())
+        .then(json => console.log(json))
 
-function App() {
+ 
+  };
 
-function createAd () {
-  const requestOptions = {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ 
-      title:"string",
-      description:"string",
-      name:"string",
-      location:"string",
-    })
-};
-fetch('https://awacademy-classifieds.herokuapp.com/ad', requestOptions)
-    .then(response => response.json())
-    .then(json => console.log(json))
+  render() {
+    return (
+      <div className="App">
+        <Form onSubmit={fields => this.onSubmit(fields)} />
+      </div>
+
+    );
+  }
 }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-
-       <div>
-       <button onClick={createAd}>Ad</button>
-       </div>
-       <div className="field">
-         <label className="label">Name</label>
-         <div className="control">
-           <input className="input" type="text" placeholder="Text"></input>
-         </div>
-       </div>
-       </header>
-       
 
 
-    </div>
-  );
-}
+
+
 
 export default App;
