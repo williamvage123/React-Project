@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class Form extends React.Component {
     state = {
         title: '',
@@ -19,9 +20,29 @@ export default class Form extends React.Component {
 
 
     onSubmit = (e) => {
-        
         e.preventDefault();
         this.props.onSubmit(this.state);
+        fetch('https://awacademy-classifieds.herokuapp.com/ad', this.state, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: '',
+                description: '',
+                name: '',
+                location: '',
+                price: '',
+                contact: ''
+            })
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+
         this.setState({
             title: '',
             description: '',
@@ -31,21 +52,9 @@ export default class Form extends React.Component {
             contact: ''
 
         })
-    };
-    componentDidMount() {
-        const requestOptions = {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-              title: "string",
-              description:"string",
-              name:"string",
-              location:"string",
-            })
-        };
-        fetch('https://awacademy-classifieds.herokuapp.com/ad', requestOptions)
-            .then(response => response.json())
-            .then(json => console.log(json))
+
+
+
     }
 
     render() {

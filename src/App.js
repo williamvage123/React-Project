@@ -6,12 +6,13 @@ class App extends Component {
 
   onSubmit = fields => {
     console.log('App component got  ', fields)
-    fetch('https://awacademy-classifieds.herokuapp.com/ad')
-        .then(response => response.json())
-        .then(json => console.log(json))
-
- 
+    fetch('https://awacademy-classifieds.herokuapp.com/ad',)
+    .then(response => response.json()) 
+    .then(json => console.log(json))
+    
   };
+ 
+ 
 
   render() {
     return (
