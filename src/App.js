@@ -21,7 +21,7 @@ class App extends Component {
         <Form onSubmit={fields => this.onSubmit(fields)} />
         <List />
       </div>
-      
+      //looking at one ad specifically, or form or all.
     );
   }
 }
