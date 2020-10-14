@@ -22,7 +22,7 @@ export default class AdsList extends React.Component {
         
         const response = await fetch('https://awacademy-classifieds.herokuapp.com/ad/?filter=' + encodeURIComponent(filterParam));
         const data = await response.json();    
-        this.setState({ list : data })
+        this.setState(this.state.list.data)
         console.log(data);
     
     }
@@ -33,9 +33,7 @@ export default class AdsList extends React.Component {
     
             <div>
                 <p>List of ads</p>
-                <div>
-                    {this.state.list}
-                </div>
+                
             </div>
             
 
