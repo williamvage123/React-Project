@@ -6,7 +6,6 @@ export default class Form extends React.Component {
         super(props)
         this.state = {
             showForm: false,
-            form: {
             title: '',
             description: '',
             name: '',
@@ -14,16 +13,18 @@ export default class Form extends React.Component {
             price: null,
             email: '',
             phone: ''
-        }}
+        }
     }
     
 
     change = (e) => {
         this.setState({
-            form:{
-            [e.target.name]: e.target.value
+            //form:{
+            [e.target.name]: e.target.value,
+            //...this.state.form
+            
         }
-        });
+        );
         console.log(this.state)
     };
 
@@ -35,16 +36,16 @@ export default class Form extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(
-                /*name: this.state.name,
+            body: JSON.stringify({
+                name: this.state.name,
                 location: this.state.location,
                 price: this.state.price,
                 description: this.state.description,
                 title: this.state.title,
                 email: this.state.email, 
-                phone: this.state.phone*/
-                this.state.form          
-            )
+                phone: this.state.phone,
+                //this.state.form          
+            })
         })
             .then(response => {
                 console.log(response)
@@ -78,50 +79,50 @@ export default class Form extends React.Component {
                     type="text"
                     maxLength={80}
                     placeholder="max 80 characters"
-                    value={this.state.form.title}
+                    value={this.state.title}
                     onChange={e => this.change(e)} />
                 <br /></div>
                 <div>Description<input
                     name="description"
                     type="text"
                     placeholder="text"
-                    value={this.state.form.description}
+                    value={this.state.description}
                     onChange={e => this.change(e)} />
                 <br /></div>
                 <div>Name<input
                     name="name"
                     placeholder="my name"
                     type="text"
-                    value={this.state.form.name}
+                    value={this.state.name}
                     onChange={e => this.change(e)} />
                 <br /></div>
                 <div>Location<input
                     name="location"
                     type="text"
                     placeholder="e.g. Stockholm"
-                    value={this.state.form.location}
+                    value={this.state.location}
                     onChange={e => this.change(e)} />
                 <br /></div>
                 <div>Price<input
                     name="price"
                     type="number"
                     placeholder="price"
-                    value={this.state.form.price}
-                    onChange={e => this.setState({price: parseInt(e.target.value)})} />
+                    value={this.state.price}
+                    onChange={e => this.setState({price: parseFloat(e.target.value)})} />
                 <br /></div>
                 <div>Email<input
                     name="email"
                     type="email"
                     id="email"
                     placeholder="e.g. alexsmith@gmail.com"
-                    value={this.state.form.email}
+                    value={this.state.email}
                     onChange={e => this.change(e)} />
                 <br /></div>
                 <div>Phone number<input
                     name="phone"
                     type="tel"
                     id="phone"
-                    value={this.state.form.phone}
+                    value={this.state.phone}
                     onChange={e => this.change(e)} />
                 <br /></div>
 

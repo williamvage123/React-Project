@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Form from './Form.js'
+import List from './List.js'
 
 class App extends Component {
 
@@ -18,8 +19,9 @@ class App extends Component {
     return (
       <div className="App">
         <Form onSubmit={fields => this.onSubmit(fields)} />
+        <List />
       </div>
-
+      
     );
   }
 }
