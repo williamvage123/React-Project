@@ -8,13 +8,22 @@ export default class ShowAd extends React.Component {
     }
 
     render(){
+        console.log(this.props.ad)
         return(
-            <div>
-                {this.props.ad.title}<br/>
-                {this.props.ad.description}<br/>
+            <form>
+                <div>
                 
+                    Title: {this.props.ad.title}<br/>
+                    Description: {this.props.ad.description}<br/>
+                    Name: {this.props.ad.name}<br/>
+                    Location: {this.props.ad.location}<br/>
+                    Contact: {this.props.ad.email}<br/>
+                    Price: {this.props.ad.price}<br/>
+                    Price Negotiable: {this.props.ad.priceNegotiable?"Yes":"No"}<br/>
+
                 
-            </div>
+                </div>
+            </form>
         )
     }
 

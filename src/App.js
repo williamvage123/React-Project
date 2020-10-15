@@ -32,14 +32,10 @@ class App extends Component {
       pageElement= <List onAdClick={this.showDetails}/>
     }else if(this.state.page==="details"){
       pageElement= <ShowAd ad={this.state.ad} />
-    }else if(this.state.page==="list"){
-      
     }
 
 
     return (
-      
-                   
                 <div className="App">
                     <button onClick={() => this.setState({ page: "list"})}>Show List</button>
                     <button onClick={() => this.setState({ page: "form"})}>Hide List</button>

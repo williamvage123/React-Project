@@ -4,7 +4,7 @@ import React from 'react';
 export default class Form extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
+        this.state = { 
             showForm: false,
             title: '',
             description: '',
@@ -13,12 +13,14 @@ export default class Form extends React.Component {
             price: null,
             email: '',
             phone: '',
-            priceNegotiable: false
-        }
+            priceNegotiable: true,
+        };
+        
+        this.handleInputChange = this.handleInputChange.bind(this);
     }
 
 
-    change = (e) => {
+    /*change = (e) => {
         this.setState({
             //form:{
             [e.target.name]: e.target.value,
@@ -27,7 +29,7 @@ export default class Form extends React.Component {
         }
         );
         
-    };
+    };*/
 
 
     onSubmit = (e) => {
@@ -44,7 +46,7 @@ export default class Form extends React.Component {
                 description: this.state.description,
                 title: this.state.title,
                 email: this.state.email,
-                phone: this.state.phone,
+                
                 //this.state.form          
             })
         })
@@ -62,6 +64,18 @@ export default class Form extends React.Component {
 
 
     }
+
+    handleInputChange(event){
+        const target= event.target;
+        const value= target.type==='checkbox'? target.checked : target.value;  
+        const name = target.name;
+
+        this.setState({
+            
+            [name]: value
+        })
+    }
+
 
     render() {
 
@@ -84,28 +98,28 @@ export default class Form extends React.Component {
                     maxLength={80}
                     placeholder="max 80 characters"
                     value={this.state.title}
-                    onChange={e => this.change(e)} />
+                    onChange={this.handleInputChange} />
                     <br /></div>
                 <div>Description<input
                     name="description"
                     type="text"
                     placeholder="text"
                     value={this.state.description}
-                    onChange={e => this.change(e)} />
+                    onChange={this.handleInputChange} />
                     <br /></div>
                 <div>Name<input
                     name="name"
                     placeholder="my name"
                     type="text"
                     value={this.state.name}
-                    onChange={e => this.change(e)} />
+                    onChange={this.handleInputChange} />
                     <br /></div>
                 <div>Location<input
                     name="location"
                     type="text"
                     placeholder="e.g. Stockholm"
                     value={this.state.location}
-                    onChange={e => this.change(e)} />
+                    onChange={this.handleInputChange} />
                     <br /></div>
                 <div>Price<input
                     name="price"
@@ -117,10 +131,11 @@ export default class Form extends React.Component {
                 <div>Price Negotiable<input
                     name="price negotiable"
                     type="checkbox"
-                    id="email"
+                    onChange={this.handleInputChange} //
                     placeholder="price negotiable"
-                    value={this.state.priceNegotiable}
-                    onChange={e => this.change(e)} />
+                    //value={this.state.priceNegotiable}
+                    //onChange={e => this.change(e)} 
+                    />
                     <br /></div>
                 <div>Email<input
                     name="email"
@@ -128,16 +143,8 @@ export default class Form extends React.Component {
                     id="email"
                     placeholder="e.g. alexsmith@gmail.com"
                     value={this.state.email}
-                    onChange={e => this.change(e)} />
+                    onChange={this.handleInputChange} />
                     <br /></div>
-                <div>Phone number<input
-                    name="phone"
-                    type="tel"
-                    id="phone"
-                    value={this.state.phone}
-                    onChange={e => this.change(e)} />
-                    <br /></div>
-
 
                 <button onClick={(e) => this.onSubmit(e)}>Create Ad</button>
                

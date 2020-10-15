@@ -32,16 +32,18 @@ export default class List extends React.Component {
     
 
     render () {
-        return (
+       const list=this.state.list.map(ad => 
+        <li><h3><strong>Title:{ad.title}</strong></h3>({ad.description.slice(0, 100)})
+        <div><button onClick={()=> {this.props.onAdClick(ad)}} >View ad</button></div>
+        
+        </li>)
+        
+       return (
             
             <div className="List">
                 <p><strong>List of ads:</strong></p>
                 <ol>
-                    {this.state.list.map(m => 
-                    <li><h3><strong>Title:{m.title}</strong></h3>({m.description.slice(0, 100)})
-                    <div><button onClick={()=> {this.props.onAdClick(m)}} >View ad</button></div>
-                    
-                    </li>)}
+                    {list}
                 </ol>
                 
             </div>
