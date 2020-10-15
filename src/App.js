@@ -37,36 +37,14 @@ class App extends Component {
 
 
     return (
-      <section className="hero is-primary is-medium">
-            <div class="hero-body">
-              <div class="container has-text-centered">
-                <h1 class="title">
-                    Classified Ads
-                </h1>
-                <h2 class="subtitle">
-                    User Stories
-                </h2>
-              </div>
-            </div>
-            <div class="hero-foot">
-              <nav class="tabs">
-                <div class="container">
-                  <ul>
-                    <li class="is-active"><a>Overview</a></li>
-                    <li><a><button class="" onClick={() => this.setState({ page: "list"})}>Show List</button></a></li>
-                    <li><a><button onClick={() => this.setState({ page: "form"})}>Hide List</button></a></li>
-                    <li><a>{pageElement}</a></li>
-                    
-                  </ul>
-                </div>
-              </nav>
-            </div>
-                {/*<div className="App">
+      
+                   
+                <div className="App">
                     <button onClick={() => this.setState({ page: "list"})}>Show List</button>
                     <button onClick={() => this.setState({ page: "form"})}>Hide List</button>
                     {pageElement}
-                </div>*/}
-      </section>
+                </div>
+     
       //looking at one ad specifically, or form or all.
     );
   }
