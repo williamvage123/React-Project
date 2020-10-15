@@ -35,7 +35,7 @@ class App extends Component {
         <button onClick={() => this.setState({ page: "form"})}>Hide List</button>
        {pageElement}
       </div>
-      
+      //looking at one ad specifically, or form or all.
     );
   }
 }
