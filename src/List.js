@@ -1,7 +1,8 @@
 
 import React from 'react';
 
-export default class AdsList extends React.Component {
+
+export default class List extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -28,14 +29,18 @@ export default class AdsList extends React.Component {
     }
 
     
+
     render () {
         return (
             
             <div className="List">
                 <p><strong>List of ads:</strong></p>
                 <ol>
-                    {this.state.list.map(m => <li><h3><strong>Title:{m.title}</strong></h3>({m.description.slice(0, 100)})
-                    <div><button>View ad</button></div></li>)}
+                    {this.state.list.map(m => 
+                    <li><h3><strong>Title:{m.title}</strong></h3>({m.description.slice(0, 100)})
+                    <div><button onClick={()=> {this.props.onAdClick(m)}} >View ad</button></div>
+                    
+                    </li>)}
                 </ol>
                 
             </div>
