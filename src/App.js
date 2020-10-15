@@ -4,22 +4,36 @@ import Form from './Form.js'
 import List from './List.js'
 
 class App extends Component {
-
-  onSubmit = fields => {
-    console.log('App component got  ', fields)
-    fetch('https://awacademy-classifieds.herokuapp.com/ad',)
-    .then(response => response.json()) 
-    .then(json => console.log(json))
-    
+  constructor(props){
+    super(props)
+    this.state= {
+      page: "form",
+      ad: ""
+    }
+     
+  }
+  showList = () => {
+    this.setState({page: "list"})
   };
  
- 
+  
+
 
   render() {
+    
+    let pageElement;
+    if(this.state.page==="form"){
+      pageElement= <Form onSubmit={this.showList} />
+    }else if(this.state.page==="list"){
+      pageElement= <List />
+    }
+
+
     return (
       <div className="App">
-        <Form onSubmit={fields => this.onSubmit(fields)} />
-        <List />
+        <button onClick={() => this.setState({ page: "list"})}>Show List</button>
+        <button onClick={() => this.setState({ page: "form"})}>Hide List</button>
+       {pageElement}
       </div>
       
     );

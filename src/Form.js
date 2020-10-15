@@ -15,17 +15,17 @@ export default class Form extends React.Component {
             phone: ''
         }
     }
-    
+
 
     change = (e) => {
         this.setState({
             //form:{
             [e.target.name]: e.target.value,
             //...this.state.form
-            
+
         }
         );
-        console.log(this.state)
+        
     };
 
 
@@ -42,13 +42,14 @@ export default class Form extends React.Component {
                 price: this.state.price,
                 description: this.state.description,
                 title: this.state.title,
-                email: this.state.email, 
+                email: this.state.email,
                 phone: this.state.phone,
                 //this.state.form          
             })
         })
             .then(response => {
                 console.log(response)
+                this.props.onSubmit()
             })
             .catch(error => {
                 console.log(error)
@@ -61,11 +62,12 @@ export default class Form extends React.Component {
 
     }
 
-    render(){
+    render() {
+
         return (
             <div>
-                <button onClick={()=>this.setState({showForm: true})}>Click me</button>
-                {this.state.showForm ? this.renderForm() : null }
+                <button onClick={() => this.setState({ showForm: !this.state.showForm })}>Show Form</button>
+                {this.state.showForm ? this.renderForm() : null}
 
             </div>
         )
@@ -81,35 +83,35 @@ export default class Form extends React.Component {
                     placeholder="max 80 characters"
                     value={this.state.title}
                     onChange={e => this.change(e)} />
-                <br /></div>
+                    <br /></div>
                 <div>Description<input
                     name="description"
                     type="text"
                     placeholder="text"
                     value={this.state.description}
                     onChange={e => this.change(e)} />
-                <br /></div>
+                    <br /></div>
                 <div>Name<input
                     name="name"
                     placeholder="my name"
                     type="text"
                     value={this.state.name}
                     onChange={e => this.change(e)} />
-                <br /></div>
+                    <br /></div>
                 <div>Location<input
                     name="location"
                     type="text"
                     placeholder="e.g. Stockholm"
                     value={this.state.location}
                     onChange={e => this.change(e)} />
-                <br /></div>
+                    <br /></div>
                 <div>Price<input
                     name="price"
                     type="number"
                     placeholder="price"
                     value={this.state.price}
-                    onChange={e => this.setState({price: parseFloat(e.target.value)})} />
-                <br /></div>
+                    onChange={e => this.setState({ price: parseFloat(e.target.value) })} />
+                    <br /></div>
                 <div>Email<input
                     name="email"
                     type="email"
@@ -117,17 +119,18 @@ export default class Form extends React.Component {
                     placeholder="e.g. alexsmith@gmail.com"
                     value={this.state.email}
                     onChange={e => this.change(e)} />
-                <br /></div>
+                    <br /></div>
                 <div>Phone number<input
                     name="phone"
                     type="tel"
                     id="phone"
                     value={this.state.phone}
                     onChange={e => this.change(e)} />
-                <br /></div>
+                    <br /></div>
 
 
                 <button onClick={(e) => this.onSubmit(e)}>Create Ad</button>
+               
             </form>
         );
 
