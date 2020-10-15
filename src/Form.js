@@ -12,7 +12,8 @@ export default class Form extends React.Component {
             location: '',
             price: null,
             email: '',
-            phone: ''
+            phone: '',
+            priceNegotiable: false
         }
     }
 
@@ -112,6 +113,14 @@ export default class Form extends React.Component {
                     placeholder="price"
                     value={this.state.price}
                     onChange={e => this.setState({ price: parseFloat(e.target.value) })} />
+                    <br /></div>
+                <div>Price Negotiable<input
+                    name="price negotiable"
+                    type="checkbox"
+                    id="email"
+                    placeholder="price negotiable"
+                    value={this.state.priceNegotiable}
+                    onChange={e => this.change(e)} />
                     <br /></div>
                 <div>Email<input
                     name="email"

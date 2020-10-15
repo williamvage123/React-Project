@@ -15,6 +15,7 @@ export default class List extends React.Component {
         const filter = {
             "limit": 20,
             "offset": 0,
+            //location and value
         };
 
         const filterParam = JSON.stringify(filter);

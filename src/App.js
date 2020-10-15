@@ -18,8 +18,7 @@ class App extends Component {
   };
   
   showDetails = (ad) => {
-    this.setState({ad: ad})
-    this.setState({page: "details"})
+    this.setState({ad: ad, page: "details"})
   }
   
 
@@ -33,6 +32,8 @@ class App extends Component {
       pageElement= <List onAdClick={this.showDetails}/>
     }else if(this.state.page==="details"){
       pageElement= <ShowAd ad={this.state.ad} />
+    }else if(this.state.page==="list"){
+      
     }
 
 

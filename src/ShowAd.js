@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 
 
 export default class ShowAd extends React.Component {
@@ -10,8 +10,10 @@ export default class ShowAd extends React.Component {
     render(){
         return(
             <div>
-                {this.props.ad.title}
-                {this.props.ad.description}
+                {this.props.ad.title}<br/>
+                {this.props.ad.description}<br/>
+                
+                
             </div>
         )
     }
