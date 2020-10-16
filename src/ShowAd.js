@@ -10,7 +10,7 @@ export default class ShowAd extends React.Component {
     render(){
         console.log(this.props.ad)
         return(
-            <form>
+            <section>
                 <div>
                 
                     Title: {this.props.ad.title}<br/>
@@ -23,7 +23,7 @@ export default class ShowAd extends React.Component {
 
                 
                 </div>
-            </form>
+            </section>
         )
     }
 
